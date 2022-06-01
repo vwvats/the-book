@@ -67,14 +67,15 @@ fn main() {
                 let zero = array_with_eight_zeroes[4];
 
     // 3. Functions
-        // declated with the fn keyword
+        // declared with the fn keyword
         fn some_function() { }
+        // parameters have to be annotated
         // can take in list of comma separated arguments
         fn another_func(arg1: i32, arg2: i32) { println!("arg1 {}, arg2 {}", arg1, arg2) }
         // requires a slim arrow to define a return type
         fn yet_another_func(arg1: i32, arg2: i32) -> i32 { arg1 + arg2 }
         // return keyword is not required above because expressions are implicitly returned
-        // semi colon is omitted for last expression in functions
+        // semi colon is omitted for expression because adding it makes it a statement
     
     // 4. Control Flow
         // Conditional 
