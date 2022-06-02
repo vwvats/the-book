@@ -5,16 +5,44 @@ struct Rectangle {
     height: u32,
 }
 
-fn main() {
-    let rectangle0 = Rectangle {
-        width: 100,
-        height: 75,
-    };
-    
-    let area0 = calculate_area(&rectangle0);
-    println!("The area of rectangle 0 is {}", area0);
+// Implementation of a Struct contains its methods
+// methods can have same names as struct fields
+// however, same names ideally should be used as getters
+impl Rectangle {
+    fn calculate_area(&self) -> u32 {
+        self.width * self.height
+    }
+
+    fn can_hold(&self, rectangle: &Rectangle) -> bool {
+        self.width > rectangle.width && self.height > rectangle.height
+    }
 }
 
-fn calculate_area(rectangle: &Rectangle) -> u32 {
-    rectangle.width * rectangle.height
+// An associated function used as a constructor
+// calling Rectangle::square(10) will return an instance of Rectangle 
+impl Rectangle {
+    fn square(size: u32) -> Rectangle {
+        Rectangle {
+            width: size,
+            height: size,
+        }
+    }
+}
+
+fn main() {
+    let rect1 = Rectangle {
+        width: 30,
+        height: 50,
+    };
+    let rect2 = Rectangle {
+        width: 10,
+        height: 40,
+    };
+    let rect3 = Rectangle {
+        width: 60,
+        height: 45,
+    };
+
+    println!("Can rect1 hold rect2? {}", rect1.can_hold(&rect2));
+    println!("Can rect1 hold rect3? {}", rect1.can_hold(&rect3));
 }
