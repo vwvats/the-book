@@ -30,4 +30,17 @@ fn main() {
        } 
     }
     office.scream();
+
+    // Option type
+    // Rust has a special enum type called Option
+    // it can take a value of any type (Some) or be null (None)
+    let option_string = Some("whatever");       // type = Option<&str>
+    let option_integer = Some(42);              // type = Option<i8>
+    let option_null_string: Option<u32> = None; // type = Option<u32> notice type annotation is required here
+    // this is to avoid null values
+    // since we know beforehand that only Option types can be potenially null
+
+    // Note that Option<&str> and &str are not the same
+    // the former can be absent while the latter always has a valid value
+    // in order to perform operations, Option<T> has to be converted to T first
 }
