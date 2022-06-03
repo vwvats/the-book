@@ -78,4 +78,13 @@ fn main() {
         other => println!("{} matched", other),
     }
     // note how the catchall is always at the end 
+
+    // IF LET - an alternative to match
+    // this takes in a pattern and an expression and executes the code if they match
+    if let Some(number) = number_variable {
+        println!("{} matches the {}", number, number_variable);
+    } else {
+        // if let also takes an else block that executes if pattern doesn't match
+        println!("no match");
+    }
 }
