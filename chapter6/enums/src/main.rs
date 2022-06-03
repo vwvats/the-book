@@ -43,4 +43,39 @@ fn main() {
     // Note that Option<&str> and &str are not the same
     // the former can be absent while the latter always has a valid value
     // in order to perform operations, Option<T> has to be converted to T first
+
+    // Match Control Flow
+    enum Author {
+        Dickens,
+        Stevenson,
+        Faulkner,
+        Twain,
+    }
+
+    fn return_a_book(author: Author) -> String {
+        // the match can take any type (so it's different from "if" that only takes boolean)
+        // then it goes down the arms and exceutes the first match
+        match author {
+            Author::Dickens => "Great Expectations".to_string(),
+            Author::Stevenson => "Treasure Island".to_string(),
+            Author::Faulkner => "The Sound and the Fury".to_string(),
+            Author::Twain => "The Adventures of Huckleberry Finn".to_string(),
+        }
+    }
+    println!("{}", return_a_book(Author::Dickens));
+    // match cases are exhaustive, compiler will complain if all cases aren't covered
+    // however, catchall pattern can be used to cover the remaining cases
+    match number {
+        1 => println!("1 matched!"),
+        2 => println!("2 matched!"),
+        _ => println!("if number is not 1 or 2, then this line is printed"),
+    }
+
+    // to grab the value when the catchall gets executed _ can be named
+    match number {
+        1 => println!("1 matched!"),
+        2 => println!("2 matched!"),
+        other => println!("{} matched", other),
+    }
+    // note how the catchall is always at the end 
 }
